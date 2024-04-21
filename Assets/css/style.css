@@ -1,0 +1,23 @@
+@import "/node_modules/bulma/css/bulma.css";
+
+#heading-1{
+ }
+
+.card-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px black solid;
+    height: 40rem;;
+}
+
+ /*had to add this becuase bulma does not add this margin to the last box for some reason  */
+.custom-boxes-container .box:last-child {
+    margin-bottom: 1.5rem;
+}
+
+.card {
+    border: 1px red solid;
+    width: 20%;
+    height:65%;
+}
