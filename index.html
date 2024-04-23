@@ -30,12 +30,25 @@
         </div>
 
         <div class="field">
-            <label for="city-input" class="">City</label>
-            <input type="text" class="input" placeholder="Boston">
+            <form id="search-form">
+                <label for="city-input" class="">City</label>
+                <input type="text" class="input" id="search-input" placeholder="Boston">
+            </form>
         </div>
 
 
     </div>
+    <script>
+        const apiKey = "0f91ebf223b92369d1d8bd01fb96bc19";
+        const apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=boston";
+
+        async function checkWeather() {
+            const response = await fetch(apiUrl + `&appid=${apiKey}`);
+            var data = await response.json();
+
+            console.log(data);
+        }
+    </script>
     <script src="./Assets/js/index.js"></script>
 </body>
 
