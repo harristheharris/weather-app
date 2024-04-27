@@ -52,10 +52,14 @@ function searchApi(query){
                 for (const child of resultContentEl.children) {
 
                     //creating the varriable of the current child we are looping through
+                    
                     let currentChild = Array.prototype.indexOf.call(resultContentEl.children, child);
 
-
                     console.log(`This is current array #${currentChild + 1}`);
+
+                    printResults(locRes.list[currentChild], child)
+                    
+
                     
                 }
     
@@ -65,6 +69,24 @@ function searchApi(query){
         .catch(function (error) {
             console.error(error);
         })
+}
+
+function printResults(weatherData, currentChild){
+
+
+    
+    return currentChild.innerHTML = `
+    
+    <div>
+
+
+
+
+    </div>
+    
+    
+    `;
+
 }
 
 getParams();
