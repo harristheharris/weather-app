@@ -18,7 +18,7 @@ function searchApi(query){
     var apiKey = "2ffdf672e25a72f3635e2448e9356ebd"
     var localQueryUrl = 'https://api.openweathermap.org/data/2.5/forecast';
 
-    localQueryUrl = `${localQueryUrl}${query}&cnt=5&appid=${apiKey}`;
+    localQueryUrl = `${localQueryUrl}${query}&cnt=40&appid=${apiKey}&units=imperial`;
     console.log(localQueryUrl);
 
     fetch(localQueryUrl)
@@ -57,7 +57,7 @@ function searchApi(query){
 
                     console.log(`This is current array #${currentChild + 1}`);
 
-                    printResults(locRes.list[currentChild], child)
+                    printResults(locRes.list, child, currentChild)
                     
 
                     
@@ -71,14 +71,43 @@ function searchApi(query){
         })
 }
 
-function printResults(weatherData, currentChild){
+function printResults(weatherData, child, currentChild){
+    let poop1 = weatherData[1];
+    let poop2 = weatherData[9];
+    let poop3 = weatherData[17];
+    let poop4 = weatherData[25];
+    let poop5 = weatherData[33];
+    let eachDay = [poop1, poop2, poop3, poop4, poop5]
 
+let daysData = eachDay[currentChild]
+console.log(eachDay);
+// console.log(weatherData);
+// console.log(daysData);
+// console.log(daysData.main.temp);
+// console.log(daysData.weather[0].main);
+// console.log(daysData.main.humidity);
+// console.log(daysData.dt_txt);
+let tempData = daysData.main.temp;
+let skyData = daysData.weather[0].main;
+let dateData = daysData.dt_txt;
+let humidData = daysData.main.humidity;
+let windSpeedData = daysData.wind.speed;
+let iconData = daysData.weather[0].icon;
 
     
-    return currentChild.innerHTML = `
+    return child.innerHTML = `
     
     <div>
 
+    <h4>${dateData}</h4>
+    <div>
+    <p>Temparture: ${tempData} F</p>
+    <p>Skies: ${skyData}</p>
+    <p>Humidity: ${humidData}%</p>
+    <p>Wind Speed: ${windSpeedData}</p>
+    ${iconData}
+    </div>
+        
 
 
 
