@@ -1,3 +1,5 @@
+console.log('you made it boy');
+
 var resultContentEl = document.querySelector('#result-content');
 var resultTextEl = document.querySelector('#result-text')
 
@@ -6,7 +8,7 @@ function getParams() {
     //we need to grab the search params from the url we redirected to
 
     var searchParamsArr = document.location.search.split('&');
-
+    console.log(searchParamsArr);
     //getting and formating the values
     var query = searchParamsArr;
 
@@ -16,9 +18,9 @@ function getParams() {
 
 function searchApi(query) {
     var apiKey = "2ffdf672e25a72f3635e2448e9356ebd"
-    var localQueryUrl = 'https://api.openweathermap.org/data/2.5/forecast';
+    var localQueryUrl = 'https://api.openweathermap.org/data/2.5/weather';
 
-    localQueryUrl = `${localQueryUrl}${query}&cnt=40&appid=${apiKey}&units=imperial`;
+    localQueryUrl = `${localQueryUrl}${query}&cnt=1&appid=${apiKey}&units=imperial`;
     console.log(localQueryUrl);
 
     fetch(localQueryUrl)
@@ -32,15 +34,14 @@ function searchApi(query) {
         .then(function (locRes) {
 
             console.log(locRes);
-            console.log(locRes.city.name);
-            console.log(locRes.list.length);
+            console.log(locRes.name);
             console.log(resultContentEl.children)
-            let cityName = locRes.city.name;
+            let cityName = locRes.name;
 
             // resultTextEl.textContent = cityName;
 
 
-            if (!locRes.list.length) {
+            if (!locRes) {
                 console.log(`no length on this array aka nothing in the array therefore no results`);
                 resultContentEl.innerHTML = `<h3>that ain't no city of mine! Try again!</h3>`;
 
@@ -56,8 +57,8 @@ function searchApi(query) {
                     let currentChild = Array.prototype.indexOf.call(resultContentEl.children, child);
 
                     console.log(`This is current array #${currentChild + 1}`);
-
-                    printResults(locRes.list, child, currentChild)
+                    console.log(locRes);
+                    printResults(locRes, child, currentChild)
 
 
 
@@ -72,24 +73,18 @@ function searchApi(query) {
 }
 
 function printResults(weatherData, child, currentChild) {
-    let poop1 = weatherData[1];
-    let poop2 = weatherData[9];
-    let poop3 = weatherData[17];
-    let poop4 = weatherData[25];
-    let poop5 = weatherData[33];
-    let eachDay = [poop1, poop2, poop3, poop4, poop5]
 
-    let daysData = eachDay[currentChild]
-    console.log(eachDay);
+    let daysData = weatherData;
+    
     // console.log(weatherData);
-    // console.log(daysData);
+    console.log(daysData);
     // console.log(daysData.main.temp);
     // console.log(daysData.weather[0].main);
     // console.log(daysData.main.humidity);
     // console.log(daysData.dt_txt);
+    let cityName = daysData.name;
     let tempData = daysData.main.temp;
-    let skyData = daysData.weather[0].main;
-    let dateData = daysData.dt_txt;
+    let skyData = daysData.weather[0].main; 
     let humidData = daysData.main.humidity;
     let windSpeedData = daysData.wind.speed;
     let iconData = daysData.weather[0].icon;
@@ -99,7 +94,7 @@ function printResults(weatherData, child, currentChild) {
     
     <div>
 
-    <h4>${dateData}</h4>
+    <h4>${cityName}</h4>
     <div>
         <p>Temparture: ${tempData} F</p>
         <p>Skies: ${skyData}</p>
