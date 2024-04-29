@@ -18,22 +18,24 @@
 
             </div>
         </section>
-        <div>
-            <h2>City</h2>
-        </div>
-        
-
-        <div class="field">
+       
+        <div class="field container">
             <form id="search-form">
-                <label for="city-input" class="">City</label>
-                <input type="text" class="input" id="search-input" placeholder="Boston">
-                <button class="btn btn-info btn-block">Click Me</button>
+                <label for="city-input" class=""><span class="content is-size-2  has-text-centered ">Input a
+                        City</span></label>
+                <input type="text" class="input is-size-3" id="search-input" placeholder="Boston">
+                <select name="" id="what-weather-type">
+                    <option value="" disabled selected>Select an option...</option>
+                    <option value="current-weather">Current Weather of a city</option>
+                    <option value="5-day-weather">The next 5 days of weather in a city</option>
+                </select>
+                <button class="btn btn-info btn-block">Submit</button>
             </form>
         </div>
 
 
     </div>
-    
+
     <script src="./Assets/js/index.js"></script>
 </body>
 
