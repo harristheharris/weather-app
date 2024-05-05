@@ -86,6 +86,8 @@ function printResults(weatherData, child, currentChild) {
     let poop5 = weatherData.list[33];
     let eachDay = [poop1, poop2, poop3, poop4, poop5]
 
+    console.log(poop1);
+
     let daysData = eachDay[currentChild]
     console.log(eachDay);
     // console.log(weatherData);
