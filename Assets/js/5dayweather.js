@@ -22,16 +22,26 @@ function searchApi(query) {
     localQueryUrl = `${localQueryUrl}${query}&cnt=40&appid=${apiKey}&units=imperial`;
     console.log(localQueryUrl);
 
+    //fetching the request in a url. The url will give us a request for what th euser inputs
+    //We will will have 2 then() methods and a catch(). 
+     
     fetch(localQueryUrl)
+    //The first then() checks to see if we get a response
+
         .then(function (response) {
+            //If we dont get a response
             if (!response.ok) {
+                //we throw an exception
                 throw response.json();
             }
 
+            //otherwise we exit out of this block and into the next then()
             return response.json();
         })
+        //The second thing checks/ validates to see if we get an object with a list inside. The list is the days we are retrieve to display
         .then(function (locRes) {
 
+            
             console.log(locRes);
             console.log(locRes.city.name);
             console.log(locRes.list.length);
@@ -45,6 +55,7 @@ function searchApi(query) {
                 console.log(`no length on this array aka nothing in the array therefore no results`);
                 resultContentEl.innerHTML = `<h3>that ain't no city of mine! Try again!</h3>`;
 
+            //otherwise we are printing out our results
             } else {
                 console.log(resultContentEl);
                 // resultContentEl.textContent = ``;
@@ -67,6 +78,7 @@ function searchApi(query) {
 
             }
         })
+        //if the promise is rejecgted we throw an excpetion
         .catch(function (error) {
             console.error(error);
         })
@@ -105,7 +117,7 @@ function printResults(weatherData, child, currentChild) {
     let windSpeedData = daysData.wind.speed;
     let iconData = daysData.weather[0].icon;
 
-    //priont time
+    //print time
     return child.innerHTML = `
     
     

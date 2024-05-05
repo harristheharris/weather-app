@@ -1,4 +1,4 @@
-console.log('you made it boy');
+//console.log('you made it boy');
 
 var resultContentEl = document.querySelector('#result-content');
 var resultTextEl = document.querySelector('#result-text')
@@ -90,6 +90,7 @@ function printResults(weatherData, child, currentChild) {
     let iconData = daysData.weather[0].icon;
 
 
+    //print results to our html file
     return child.innerHTML = `
     
     <div>
