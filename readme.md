@@ -15,7 +15,11 @@
 
 <a id="install"></a>
 ## Installation 
- There are no steps to installing this project.
+ There are no steps to installing this project. Below are screenshots.
+ 
+ [Homepage](./Assets/images/Homepage%20SC.png)
+ [Current Weather](./Assets/images/Current%20SC.png)
+ [5 Days of weather](./Assets/images/5Day%20SC.png)
 
 <a id="use"></a>
 ## Usage 

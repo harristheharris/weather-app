@@ -57,7 +57,7 @@ function searchApi(query) {
 
             //otherwise we are printing out our results
             } else {
-                console.log(resultContentEl);
+                //console.log(resultContentEl);
                 // resultContentEl.textContent = ``;
                 //we need to get one then all five
                 //we going to loop through the children of teh resultContentEl element
@@ -98,7 +98,7 @@ function printResults(weatherData, child, currentChild) {
     let poop5 = weatherData.list[33];
     let eachDay = [poop1, poop2, poop3, poop4, poop5]
 
-    console.log(poop1);
+    //console.log(poop1);
 
     let daysData = eachDay[currentChild]
     console.log(eachDay);
